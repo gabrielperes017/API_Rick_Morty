@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+ <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Personagens Rick and Morty</h1>
+  <div id="lista-personagens"></div>
+
+  <script>
+    const lista = document.getElementById('lista-personagens');
+
+    async function carregarPaginaUnica() {
+      try {
+        const resposta = await fetch(`https://rickandmortyapi.com/api/character?page=1`);
+        const dados = await resposta.json();
+
+        lista.innerHTML = '';
+
+        dados.results.forEach(({ image, name, status, species, gender, origin }) => {
+          const div = document.createElement('div');
+          div.className = 'personagem';
+          div.innerHTML = `
+            <img src="${image}" alt="Foto de ${name}" />
+            <div>
+              <strong>${name}</strong><br/>
+              Status: ${status}<br/>
+              Espécie: ${species}<br/>
+              Gênero: ${gender}<br/>
+              Origem: ${origin.name}
+            </div>
+          `;
+          lista.appendChild(div);
+        });
+      } catch {
+        lista.innerHTML = '<p>Erro ao carregar personagens.</p>';
+      }
+    }
+
+    carregarPaginaUnica();
+  </script>
+</body>
+
+</html>

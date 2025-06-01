@@ -1,0 +1,28 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: antiquewhite;
+  max-width:900px;
+  margin: auto;
+}
+h1{
+  text-align: center;
+}
+.personagem {
+  background: #fff;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  box-shadow: 5px 4px 4px #838282;
+}
+
+.personagem img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+
